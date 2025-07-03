@@ -116,18 +116,172 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects py-5">
+    <!-- Projects Section (Redesigned, Dark Card) -->
+    <section id="projects" class="projects-section">
         <div class="container">
-            <h2 class="text-center mb-5 display-4" data-aos="fade-up">Projects</h2>
-            <div class="projects-scroll-wrapper position-relative">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-carousel-wrapper">
+                <!-- Arrows will be hidden on small screens -->
                 <button class="scroll-arrow arrow-left" aria-label="Scroll left">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <div class="projects-horizontal-scroll">
-                    <div class="projects-list">
-                        <!-- Project cards will be injected here by JS -->
+                <div class="projects-carousel">
+                    <div class="project-card dark">
+                        <div class="project-media">
+                            <img src="enhanced-shot.png" alt="Project Screenshot" />
+                            <div class="project-icon"><i class="fas fa-code"></i></div>
+                            <span class="status-badge completed">COMPLETED</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title accent">JSProject</h3>
+                            <p class="project-desc">A modern web application built with JavaScript and modern web technologies.</p>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar"></i> 2024</span>
+                                <span><i class="fab fa-js"></i> JavaScript</span>
+                                <span><i class="fas fa-star"></i> Featured</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">HTML5</span>
+                                <span class="tech-pill">CSS3</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="#" class="btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="#" class="btn btn-details"><i class="fas fa-info-circle"></i> Details</a>
+                            </div>
+                        </div>
                     </div>
+                    <!-- Project 2 -->
+                    <div class="project-card dark">
+                        <div class="project-media">
+                            <img src="enhanced-shot.png" alt="Project Screenshot" />
+                            <div class="project-icon"><i class="fas fa-gamepad"></i></div>
+                            <span class="status-badge in-progress">IN PROGRESS</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title accent">Snake Game</h3>
+                            <p class="project-desc">A classic Snake game built with HTML5 Canvas and JavaScript, featuring smooth controls and a retro look.</p>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar"></i> 2023</span>
+                                <span><i class="fab fa-js"></i> JavaScript</span>
+                                <span><i class="fas fa-trophy"></i> Game</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">HTML5</span>
+                                <span class="tech-pill">Canvas</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="#" class="btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="#" class="btn btn-details"><i class="fas fa-info-circle"></i> Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="project-card dark">
+                        <div class="project-media">
+                            <img src="enhanced-shot.png" alt="Project Screenshot" />
+                            <div class="project-icon"><i class="fas fa-database"></i></div>
+                            <span class="status-badge completed">COMPLETED</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title accent">DB Manager</h3>
+                            <p class="project-desc">A database management tool for organizing, querying, and visualizing SQL databases with a user-friendly interface.</p>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar"></i> 2022</span>
+                                <span><i class="fas fa-database"></i> SQL</span>
+                                <span><i class="fas fa-cogs"></i> Tool</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">C#</span>
+                                <span class="tech-pill">.NET</span>
+                                <span class="tech-pill">SQL Server</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="#" class="btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="#" class="btn btn-details"><i class="fas fa-info-circle"></i> Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 4 -->
+                    <div class="project-card dark">
+                        <div class="project-media">
+                            <img src="enhanced-shot.png" alt="Project Screenshot" />
+                            <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+                            <span class="status-badge completed">COMPLETED</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title accent">Analytics Pro</h3>
+                            <p class="project-desc">A data analytics dashboard for visualizing business metrics and KPIs in real time.</p>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar"></i> 2023</span>
+                                <span><i class="fas fa-chart-bar"></i> Analytics</span>
+                                <span><i class="fas fa-bolt"></i> Fast</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">React</span>
+                                <span class="tech-pill">Node.js</span>
+                                <span class="tech-pill">D3.js</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="#" class="btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="#" class="btn btn-details"><i class="fas fa-info-circle"></i> Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 5 -->
+                    <div class="project-card dark">
+                        <div class="project-media">
+                            <img src="enhanced-shot.png" alt="Project Screenshot" />
+                            <div class="project-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <span class="status-badge in-progress">IN PROGRESS</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title accent">Mobile Shop</h3>
+                            <p class="project-desc">A mobile e-commerce app for browsing and purchasing the latest smartphones and accessories.</p>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar"></i> 2024</span>
+                                <span><i class="fas fa-mobile"></i> Mobile</span>
+                                <span><i class="fas fa-shopping-cart"></i> E-Commerce</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">Flutter</span>
+                                <span class="tech-pill">Dart</span>
+                                <span class="tech-pill">Firebase</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="#" class="btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="#" class="btn btn-details"><i class="fas fa-info-circle"></i> Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 6 -->
+                    <div class="project-card dark">
+                        <div class="project-media">
+                            <img src="enhanced-shot.png" alt="Project Screenshot" />
+                            <div class="project-icon"><i class="fas fa-cloud"></i></div>
+                            <span class="status-badge completed">COMPLETED</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title accent">CloudSync</h3>
+                            <p class="project-desc">A cloud storage solution for syncing and sharing files securely across devices.</p>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar"></i> 2023</span>
+                                <span><i class="fas fa-cloud"></i> Cloud</span>
+                                <span><i class="fas fa-lock"></i> Secure</span>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">Django</span>
+                                <span class="tech-pill">AWS</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="#" class="btn btn-github"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="#" class="btn btn-details"><i class="fas fa-info-circle"></i> Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more .project-card elements here for more projects -->
                 </div>
                 <button class="scroll-arrow arrow-right" aria-label="Scroll right">
                     <i class="fas fa-chevron-right"></i>

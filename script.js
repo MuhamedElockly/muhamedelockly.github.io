@@ -720,3 +720,17 @@ while (Object.keys(projectDetails).length < 9) {
         i++;
     }
 }
+
+// Projects Carousel Arrow Functionality
+const carousel = document.querySelector('.projects-carousel');
+const leftArrow = document.querySelector('.arrow-left');
+const rightArrow = document.querySelector('.arrow-right');
+
+if (carousel && leftArrow && rightArrow) {
+  leftArrow.onclick = () => {
+    carousel.scrollBy({ left: -carousel.offsetWidth, behavior: 'smooth' });
+  };
+  rightArrow.onclick = () => {
+    carousel.scrollBy({ left: carousel.offsetWidth, behavior: 'smooth' });
+  };
+}
