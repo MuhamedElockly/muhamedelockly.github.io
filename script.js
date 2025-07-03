@@ -470,6 +470,7 @@ document.querySelectorAll('.project-details-btn').forEach(button => {
         // Modern, animated, full-details modal
         modalBody.innerHTML = `
             <div class="project-modal-details animate__animated animate__fadeInUp">
+                <button type="button" class="btn-close modal-x-close" data-bs-dismiss="modal" aria-label="Close" style="position:absolute;top:1.2rem;right:1.2rem;z-index:10;font-size:1.5rem;"></button>
                 <div class="project-modal-media">
                     <a href="https://www.youtube.com/watch?v=${project.youtubeId}" target="_blank" class="youtube-thumbnail-link" style="margin-bottom:1rem;">
                         <img src="https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg" alt="${project.title} Thumbnail" style="width:100%;border-radius:1.25rem;">
@@ -649,6 +650,84 @@ function displayProjects() {
             </div>
         `;
     });
+    
+    // Attach event listeners to Details buttons after rendering
+    document.querySelectorAll('.project-details-btn').forEach(button => {
+        button.addEventListener('click', async function() {
+            const projectId = this.dataset.project;
+            const project = projectDetails[projectId];
+            const modal = document.getElementById('projectDetailsModal');
+            const modalBody = modal.querySelector('.modal-body');
+            
+            // Modern, animated, full-details modal
+            modalBody.innerHTML = `
+                <div class="project-modal-details animate__animated animate__fadeInUp">
+                    <button type="button" class="btn-close modal-x-close" data-bs-dismiss="modal" aria-label="Close" style="position:absolute;top:1.2rem;right:1.2rem;z-index:10;font-size:1.5rem;"></button>
+                    <div class="project-modal-media">
+                        <a href="https://www.youtube.com/watch?v=${project.youtubeId}" target="_blank" class="youtube-thumbnail-link" style="margin-bottom:1rem;">
+                            <img src="https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg" alt="${project.title} Thumbnail" style="width:100%;border-radius:1.25rem;">
+                            <span class="youtube-play-btn"></span>
+                        </a>
+                    </div>
+                    <div class="project-modal-info">
+                        <h2 class="project-title accent mb-2">${project.title}</h2>
+                        <div class="project-modal-meta mb-2">
+                            <span><i class="fas fa-calendar"></i> ${project.date}</span>
+                            <span><i class="fas fa-code-branch"></i> ${project.type}</span>
+                            <span><i class="fas fa-clock"></i> ${project.duration}</span>
+                            <span><i class="fas fa-user"></i> ${project.role}</span>
+                        </div>
+                        <div class="project-modal-tech mb-2">
+                            ${(project.technologies || []).map(t => `<span class='tech-pill'>${t}</span>`).join(' ')}
+                        </div>
+                        <div class="project-modal-section mb-2">
+                            <div class="project-modal-section-title">Description</div>
+                            <div class="project-modal-section-content">${project.description}</div>
+                        </div>
+                        <div class="project-modal-section mb-2">
+                            <div class="project-modal-section-title">Key Features</div>
+                            <div class="project-modal-section-content">
+                                <ul style="padding-left:1.2em;">
+                                    ${(project.features || []).map(f => `<li>${f}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="project-modal-section mb-2">
+                            <div class="project-modal-section-title">Challenges</div>
+                            <div class="project-modal-section-content">${project.challenges}</div>
+                        </div>
+                        <div class="project-modal-section mb-2">
+                            <div class="project-modal-section-title">Solutions</div>
+                            <div class="project-modal-section-content">${project.solutions}</div>
+                        </div>
+                        <div class="project-modal-section mb-2">
+                            <div class="project-modal-section-title">My Contributions</div>
+                            <div class="project-modal-section-content">
+                                <ul style="padding-left:1.2em;">
+                                    ${(project.contributions || []).map(c => `<li>${c}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="project-modal-section mb-2">
+                            <div class="project-modal-section-title">Achievements</div>
+                            <div class="project-modal-section-content">
+                                <ul style="padding-left:1.2em;">
+                                    ${(project.achievements || []).map(a => `<li>${a}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="project-modal-actions mt-3">
+                            ${project.githubUrl ? `<a href="${project.githubUrl}" class="btn btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>` : ''}
+                            ${project.demoUrl ? `<a href="${project.demoUrl}" class="btn btn-live" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+            const modalInstance = new bootstrap.Modal(modal);
+            modalInstance.show();
+        });
+    });
+    
     AOS.refreshHard();
 }
 
