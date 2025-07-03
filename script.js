@@ -262,6 +262,7 @@ const projectDetails = {
         description: 'A modern web application showcasing advanced JavaScript features and modern web development practices.',
         githubUrl: 'https://github.com/MuhamedElockly/JSProject.git',
         demoUrl: 'https://youtu.be/YVkUvmDQ3HY?si=xqty1I8cOQHrm5Il',
+        youtubeId: 'YVkUvmDQ3HY',
         features: [
             'Responsive and modern UI design',
             'Interactive user interface',
@@ -298,7 +299,8 @@ const projectDetails = {
         title: 'E-Commerce MVC',
         description: 'A full-featured e-commerce platform with modern design and robust functionality.',
         githubUrl: 'https://github.com/MuhamedElockly/E-Commerce_MVC_Web_Application.git',
-        demoUrl: null,
+        demoUrl: 'https://www.youtube.com/watch?v=YVkUvmDQ3HY',
+        youtubeId: 'YVkUvmDQ3HY',
         features: [
             'Product catalog with categories',
             'Shopping cart and checkout',
@@ -335,7 +337,8 @@ const projectDetails = {
         title: 'DevSpot',
         description: 'A developer community platform for sharing knowledge and collaborating on projects.',
         githubUrl: 'https://github.com/MuhamedElockly/DevSpot_MVC_Web_Application.git',
-        demoUrl: null,
+        demoUrl: 'https://www.youtube.com/watch?v=YVkUvmDQ3HY',
+        youtubeId: 'YVkUvmDQ3HY',
         features: [
             'Real-time chat and notifications',
             'Code sharing and collaboration',
@@ -372,7 +375,8 @@ const projectDetails = {
         title: 'Snake Game',
         description: 'A classic Snake game implemented using JavaScript, HTML5, and CSS3.',
         githubUrl: 'https://github.com/MuhamedElockly/snake-project.git',
-        demoUrl: null, // Add demo URL if available
+        demoUrl: 'https://www.youtube.com/watch?v=YVkUvmDQ3HY',
+        youtubeId: 'YVkUvmDQ3HY',
         features: [
             'Classic Snake gameplay',
             'Score tracking',
@@ -399,6 +403,38 @@ const projectDetails = {
         achievements: [
             'Successfully implemented classic Snake gameplay',
             'Created a responsive and playable game'
+        ]
+    },
+    eminemLoseYourself: {
+        title: 'Eminem - Lose Yourself',
+        description: 'Music video for Eminem\'s iconic song "Lose Yourself".',
+        githubUrl: '',
+        demoUrl: 'https://www.youtube.com/watch?v=YVkUvmDQ3HY',
+        youtubeId: 'YVkUvmDQ3HY',
+        features: [
+            'Official music video',
+            'High quality',
+            'Over 1 billion views'
+        ],
+        technologies: [
+            'YouTube',
+            'Music',
+            'Video'
+        ],
+        challenges: 'N/A',
+        solutions: 'N/A',
+        date: '2002',
+        type: 'Music Video',
+        duration: '5 min',
+        role: 'Artist',
+        contributions: [
+            'Performance',
+            'Lyrics',
+            'Production'
+        ],
+        achievements: [
+            'Academy Award for Best Original Song',
+            'Over 1 billion views on YouTube'
         ]
     }
 };
@@ -431,122 +467,69 @@ document.querySelectorAll('.project-details-btn').forEach(button => {
         const modal = document.getElementById('projectDetailsModal');
         const modalBody = modal.querySelector('.modal-body');
         
-        // Update modal content with enhanced layout
+        // Modern, animated, full-details modal
         modalBody.innerHTML = `
-            <div class="project-details">
-                <div class="project-header mb-4">
-                    <div class="project-title-section">
-                        <h3 class="mb-2">${project.title}</h3>
-                        <div class="project-links">
-                            <a href="${project.githubUrl}" class="btn btn-sm btn-outline-primary me-2 github-link" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github me-1"></i>View on GitHub
-                            </a>
-                            ${project.demoUrl ? `
-                                <a href="${project.demoUrl}" class="btn btn-sm btn-outline-primary live-demo-link" target="_blank" rel="noopener noreferrer">
-                                    <i class="fas fa-external-link-alt me-1"></i>Live Demo
-                                </a>
-                            ` : ''}
+            <div class="project-modal-details animate__animated animate__fadeInUp">
+                <div class="project-modal-media">
+                    <a href="https://www.youtube.com/watch?v=${project.youtubeId}" target="_blank" class="youtube-thumbnail-link" style="margin-bottom:1rem;">
+                        <img src="https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg" alt="${project.title} Thumbnail" style="width:100%;border-radius:1.25rem;">
+                        <span class="youtube-play-btn"></span>
+                    </a>
+                </div>
+                <div class="project-modal-info">
+                    <h2 class="project-title accent mb-2">${project.title}</h2>
+                    <div class="project-modal-meta mb-2">
+                        <span><i class="fas fa-calendar"></i> ${project.date}</span>
+                        <span><i class="fas fa-code-branch"></i> ${project.type}</span>
+                        <span><i class="fas fa-clock"></i> ${project.duration}</span>
+                        <span><i class="fas fa-user"></i> ${project.role}</span>
+                    </div>
+                    <div class="project-modal-tech mb-2">
+                        ${(project.technologies || []).map(t => `<span class='tech-pill'>${t}</span>`).join(' ')}
+                    </div>
+                    <div class="project-modal-section mb-2">
+                        <div class="project-modal-section-title">Description</div>
+                        <div class="project-modal-section-content">${project.description}</div>
+                    </div>
+                    <div class="project-modal-section mb-2">
+                        <div class="project-modal-section-title">Key Features</div>
+                        <div class="project-modal-section-content">
+                            <ul style="padding-left:1.2em;">
+                                ${(project.features || []).map(f => `<li>${f}</li>`).join('')}
+                            </ul>
                         </div>
                     </div>
-                </div>
-
-                <div class="project-content">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="project-description mb-4">
-                                <h4 class="h5 mb-3 text-primary">Overview</h4>
-                                <p class="lead">${project.description}</p>
-                            </div>
-                            
-                            <div class="project-features mb-4">
-                                <h4 class="h5 mb-3 text-primary">Key Features</h4>
-                                <div class="features-grid">
-                                    ${project.features.map(feature => `
-                                        <div class="feature-item">
-                                            <i class="fas fa-check-circle text-primary me-2"></i>
-                                            <span>${feature}</span>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-
-                            <div class="project-technologies mb-4">
-                                <h4 class="h5 mb-3 text-primary">Technologies Used</h4>
-                                <div class="tech-stack">
-                                    ${project.technologies.map(tech => `
-                                        <span class="tech-badge">
-                                            <i class="fas fa-code me-1"></i>${tech}
-                                        </span>
-                                    `).join('')}
-                                </div>
-                            </div>
-
-                            <div class="project-challenges mb-4">
-                                <h4 class="h5 mb-3 text-primary">Challenges & Solutions</h4>
-                                <div class="row g-4">
-                                    <div class="col-md-6">
-                                        <div class="challenge-section">
-                                            <h5 class="h6 mb-2">
-                                                <i class="fas fa-exclamation-circle me-2"></i>Challenges
-                                            </h5>
-                                            <p class="challenges-text">${project.challenges}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="solution-section">
-                                            <h5 class="h6 mb-2">
-                                                <i class="fas fa-lightbulb me-2"></i>Solutions
-                                            </h5>
-                                            <p class="solutions-text">${project.solutions}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="project-modal-section mb-2">
+                        <div class="project-modal-section-title">Challenges</div>
+                        <div class="project-modal-section-content">${project.challenges}</div>
+                    </div>
+                    <div class="project-modal-section mb-2">
+                        <div class="project-modal-section-title">Solutions</div>
+                        <div class="project-modal-section-content">${project.solutions}</div>
+                    </div>
+                    <div class="project-modal-section mb-2">
+                        <div class="project-modal-section-title">My Contributions</div>
+                        <div class="project-modal-section-content">
+                            <ul style="padding-left:1.2em;">
+                                ${(project.contributions || []).map(c => `<li>${c}</li>`).join('')}
+                            </ul>
                         </div>
-
-                        <div class="col-md-4">
-                            <div class="project-sidebar">
-                                <div class="project-meta-card mb-4">
-                                    <h4 class="h5 mb-3 text-primary">Project Information</h4>
-                                    <div class="meta-list">
-                                        <div class="meta-item">
-                                            <i class="fas fa-calendar"></i>
-                                            <span>${project.date}</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-code-branch"></i>
-                                            <span>${project.type}</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-clock"></i>
-                                            <span>${project.duration}</span>
-                                        </div>
-                                        <div class="meta-item">
-                                            <i class="fas fa-user"></i>
-                                            <span>${project.role}</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="project-contributions mb-4">
-                                    <h4 class="h5 mb-3 text-primary">My Contributions</h4>
-                                    <ul class="list-unstyled contributions-list">
-                                        ${project.contributions.map(contribution => `
-                                            <li class="mb-2">
-                                                <i class="fas fa-code text-primary me-2"></i>
-                                                ${contribution}
-                                            </li>
-                                        `).join('')}
-                                    </ul>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="project-modal-section mb-2">
+                        <div class="project-modal-section-title">Achievements</div>
+                        <div class="project-modal-section-content">
+                            <ul style="padding-left:1.2em;">
+                                ${(project.achievements || []).map(a => `<li>${a}</li>`).join('')}
+                            </ul>
                         </div>
+                    </div>
+                    <div class="project-modal-actions mt-3">
+                        ${project.githubUrl ? `<a href="${project.githubUrl}" class="btn btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>` : ''}
+                        ${project.demoUrl ? `<a href="${project.demoUrl}" class="btn btn-live" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>` : ''}
                     </div>
                 </div>
             </div>
         `;
-        
-        // Show modal
         const modalInstance = new bootstrap.Modal(modal);
         modalInstance.show();
     });
@@ -594,80 +577,81 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to display projects from the projectDetails object
 function displayProjects() {
-    const projectsListContainer = document.querySelector('.projects-list');
+    const projectsListContainer = document.querySelector('.projects-list, #projects-list');
     if (!projectsListContainer) {
         console.error('Projects list container not found!');
         return;
     }
 
-    projectsListContainer.innerHTML = ''; // Clear existing content
-
-    // Convert projectDetails object to an array for easier iteration
+    projectsListContainer.innerHTML = '';
     const projectsArray = Object.values(projectDetails);
 
     projectsArray.forEach(project => {
-        const projectCardHTML = `
-            <div class="project-card card h-100">
-                 <div class="project-video-container">
-                     <a href="${project.demoUrl ? project.demoUrl : project.githubUrl}" target="_blank" rel="noopener noreferrer" class="video-link">
-                         <img src="https://img.youtube.com/vi/0AqnCSdkjQ0/maxresdefault.jpg" alt="${project.title} Demo" class="video-thumbnail">
-                         <div class="video-overlay">
-                             <button class="play-btn">
-                                 <i class="fas fa-play"></i>
-                             </button>
-                         </div>
-                     </a>
-                 </div>
-                 <div class="card-body">
-                     <div class="project-header">
-                         <div class="project-icon mb-3">
-                             <i class="fas fa-code"></i>
-                         </div>
-                         <div class="project-status">
-                             <span class="status-badge status-completed">Completed</span>
-                         </div>
-                     </div>
-                     <div class="d-flex align-items-center justify-content-between mb-2 position-relative" style="z-index:2;">
-                         <h3 class="card-title h4 mb-0">${project.title}</h3>
-                         <a href="${project.githubUrl}" class="btn btn-sm btn-outline-primary github-link ms-2" target="_blank" rel="noopener noreferrer" title="View on GitHub" style="z-index:3; position:relative;">
-                             <i class="fab fa-github"></i>
-                         </a>
-                     </div>
-                     <p class="card-text">${project.description}</p>
-                     <div class="project-meta">
-                         <div class="meta-item">
-                             <i class="fas fa-calendar"></i>
-                             <span>${project.date}</span>
-                         </div>
-                         <div class="meta-item">
-                             <i class="fas fa-code-branch"></i>
-                             <span>${project.type}</span>
-                         </div>
-                         <div class="meta-item">
-                             <i class="fas fa-star"></i>
-                             <span>Featured</span>
-                         </div>
-                     </div>
-                     <div class="project-tech-stack mb-3">
-                         ${project.technologies.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
-                     </div>
-                     <div class="project-actions">
-                         <a href="#" class="btn btn-primary project-details-btn" data-project="${project.title.toLowerCase().replace(/\s/g, '')}" data-bs-toggle="modal" data-bs-target="#projectDetailsModal">
-                             <i class="fas fa-info-circle me-2"></i>Details
-                         </a>
-                     </div>
-                 </div>
-             </div>
-        `;
-        projectsListContainer.innerHTML += projectCardHTML;
-    });
+        // Use YouTube thumbnail if youtubeId exists, else fallback to static image
+        let videoSection = '';
+        if (project.youtubeId) {
+            videoSection = `
+                <a href="https://www.youtube.com/watch?v=${project.youtubeId}" target="_blank" rel="noopener noreferrer" class="youtube-thumbnail-link">
+                    <img src="https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg" alt="${project.title} Thumbnail" class="video-thumbnail">
+                    <span class="youtube-play-btn"><i class="fas fa-play"></i></span>
+                </a>
+            `;
+        } else if (project.demoUrl && project.demoUrl.includes('youtube.com/watch')) {
+            // Extract YouTube ID from demoUrl if possible
+            const match = project.demoUrl.match(/[?&]v=([^&]+)/);
+            const id = match ? match[1] : '';
+            if (id) {
+                videoSection = `
+                    <a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" class="youtube-thumbnail-link">
+                        <img src="https://img.youtube.com/vi/${id}/maxresdefault.jpg" alt="${project.title} Thumbnail" class="video-thumbnail">
+                        <span class="youtube-play-btn"><i class="fas fa-play"></i></span>
+                    </a>
+                `;
+            }
+        }
+        // Fallback if no video
+        if (!videoSection) {
+            videoSection = `<div class="project-icon mb-3"><i class="fas fa-code"></i></div>`;
+        }
 
-    // Re-initialize AOS after projects are loaded
+        projectsListContainer.innerHTML += `
+            <div class="project-card card h-100">
+                <div class="project-video-container">
+                    ${videoSection}
+                </div>
+                <div class="card-body">
+                    <div class="project-header">
+                        <div class="project-status">
+                            <span class="status-badge status-completed">Completed</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mb-2 position-relative" style="z-index:2;">
+                        <h3 class="card-title h4 mb-0">${project.title}</h3>
+                    </div>
+                    <p class="card-text">${project.description}</p>
+                    <div class="project-meta">
+                        <div class="meta-item"><i class="fas fa-calendar"></i><span>${project.date}</span></div>
+                        <div class="meta-item"><i class="fas fa-code-branch"></i><span>${project.type}</span></div>
+                        <div class="meta-item"><i class="fas fa-star"></i><span>Featured</span></div>
+                    </div>
+                    <div class="project-tech-stack mb-3">
+                        ${(project.technologies || []).map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
+                    </div>
+                    <div class="project-actions">
+                        <a href="${project.youtubeId ? `https://www.youtube.com/watch?v=${project.youtubeId}` : (project.demoUrl || '#')}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-play me-2"></i>Watch Video
+                        </a>
+                        <button class="btn btn-details ms-2 project-details-btn" data-project="${Object.keys(projectDetails).find(key => projectDetails[key] === project)}" data-bs-toggle="modal" data-bs-target="#projectDetailsModal">
+                            <i class="fas fa-info-circle me-1"></i>Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
     AOS.refreshHard();
 }
 
-// Call the function to display projects on page load
-// window.addEventListener('load', displayProjects);
 document.addEventListener('DOMContentLoaded', displayProjects);
 
 // Horizontal scroll arrow logic for projects section
@@ -697,16 +681,35 @@ window.addEventListener('DOMContentLoaded', function() {
 
     // Optional: Hide arrows if not scrollable
     function updateArrows() {
+        // Hide arrows if not scrollable
         if (scrollContainer.scrollWidth <= scrollContainer.clientWidth + 10) {
             leftArrow.style.display = 'none';
             rightArrow.style.display = 'none';
+            return;
         } else {
             leftArrow.style.display = '';
             rightArrow.style.display = '';
         }
+        // Disable left arrow if at start
+        if (scrollContainer.scrollLeft <= 5) {
+            leftArrow.disabled = true;
+            leftArrow.classList.add('disabled');
+        } else {
+            leftArrow.disabled = false;
+            leftArrow.classList.remove('disabled');
+        }
+        // Disable right arrow if at end
+        if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 5) {
+            rightArrow.disabled = true;
+            rightArrow.classList.add('disabled');
+        } else {
+            rightArrow.disabled = false;
+            rightArrow.classList.remove('disabled');
+        }
     }
     updateArrows();
     window.addEventListener('resize', updateArrows);
+    scrollContainer.addEventListener('scroll', updateArrows);
 });
 
 // Duplicate projects for testing
@@ -736,139 +739,5 @@ if (carousel && leftArrow && rightArrow) {
 }
 
 // --- Project Details Modal Functionality ---
-const projectData = {
-  1: {
-    title: 'JSProject',
-    image: 'enhanced-shot.png',
-    status: 'COMPLETED',
-    year: '2024',
-    tech: ['JavaScript', 'HTML5', 'CSS3'],
-    meta: [
-      { icon: 'fas fa-calendar', text: '2024' },
-      { icon: 'fab fa-js', text: 'JavaScript' },
-      { icon: 'fas fa-star', text: 'Featured' }
-    ],
-    description: 'A modern web application built with JavaScript and modern web technologies.',
-    client: 'Open Source',
-    role: 'Lead Developer',
-    features: 'Real-time updates, Responsive design, REST API integration',
-    challenges: 'Cross-browser compatibility, Performance optimization',
-    solutions: 'Used modern JS frameworks, Lazy loading, Code splitting',
-    github: '#',
-    live: '#'
-  },
-  2: {
-    title: 'Snake Game',
-    image: 'enhanced-shot.png',
-    status: 'IN PROGRESS',
-    year: '2023',
-    tech: ['JavaScript', 'HTML5', 'Canvas'],
-    meta: [
-      { icon: 'fas fa-calendar', text: '2023' },
-      { icon: 'fab fa-js', text: 'JavaScript' },
-      { icon: 'fas fa-trophy', text: 'Game' }
-    ],
-    description: 'A classic Snake game built with HTML5 Canvas and JavaScript, featuring smooth controls and a retro look.',
-    client: 'Personal',
-    role: 'Game Developer',
-    features: 'Smooth controls, Retro graphics, High score tracking',
-    challenges: 'Game loop timing, Input handling',
-    solutions: 'RequestAnimationFrame, Event listeners',
-    github: '#',
-    live: '#'
-  },
-  3: {
-    title: 'DB Manager',
-    image: 'enhanced-shot.png',
-    status: 'COMPLETED',
-    year: '2022',
-    tech: ['C#', '.NET', 'SQL Server'],
-    meta: [
-      { icon: 'fas fa-calendar', text: '2022' },
-      { icon: 'fas fa-database', text: 'SQL' },
-      { icon: 'fas fa-cogs', text: 'Tool' }
-    ],
-    description: 'A database management tool for organizing, querying, and visualizing SQL databases with a user-friendly interface.',
-    client: 'Enterprise',
-    role: 'Backend Engineer',
-    features: 'Visual query builder, Data export, User management',
-    challenges: 'Security, Large data sets',
-    solutions: 'Parameterized queries, Pagination',
-    github: '#',
-    live: '#'
-  }
-};
-
-const detailsButtons = document.querySelectorAll('.btn-details');
-const modal = document.getElementById('projectDetailsModal');
-const modalBody = document.getElementById('projectDetailsModalBody');
-
-if (detailsButtons && modal && modalBody) {
-  detailsButtons.forEach(btn => {
-    btn.addEventListener('click', function() {
-      const id = this.getAttribute('data-project-id');
-      const data = projectData[id];
-      if (!data) return;
-      modalBody.innerHTML = `
-        <div class="project-modal-details">
-          <div class="project-modal-media">
-            <img src="${data.image}" alt="${data.title} Screenshot" />
-          </div>
-          <div class="project-modal-info">
-            <div class="project-modal-meta">
-              ${data.meta.map(m => `<span><i class='${m.icon}'></i> ${m.text}</span>`).join('')}
-            </div>
-            <h3 class="project-title accent" style="margin:0 0 0.5rem 0;">${data.title}</h3>
-            <div class="project-modal-tech">
-              ${data.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
-            </div>
-            <div class="project-modal-section">
-              <div class="project-modal-section-title">Description</div>
-              <div class="project-modal-section-content">${data.description}</div>
-            </div>
-            <div class="project-modal-section">
-              <div class="project-modal-section-title">Client</div>
-              <div class="project-modal-section-content">${data.client}</div>
-            </div>
-            <div class="project-modal-section">
-              <div class="project-modal-section-title">Role</div>
-              <div class="project-modal-section-content">${data.role}</div>
-            </div>
-            <div class="project-modal-section">
-              <div class="project-modal-section-title">Features</div>
-              <div class="project-modal-section-content">${data.features}</div>
-            </div>
-            <div class="project-modal-section">
-              <div class="project-modal-section-title">Challenges</div>
-              <div class="project-modal-section-content">${data.challenges}</div>
-            </div>
-            <div class="project-modal-section">
-              <div class="project-modal-section-title">Solutions</div>
-              <div class="project-modal-section-content">${data.solutions}</div>
-            </div>
-            <div class="project-modal-actions">
-              <a href="${data.github}" class="btn btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-              <a href="${data.live}" class="btn btn-live" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-            </div>
-          </div>
-        </div>
-      `;
-      // Show modal (Bootstrap 5)
-      if (window.bootstrap && bootstrap.Modal) {
-        bootstrap.Modal.getOrCreateInstance(modal).show();
-      } else {
-        modal.classList.add('show');
-        modal.style.display = 'block';
-        document.body.classList.add('modal-open');
-      }
-    });
-  });
-  // Close modal fallback (if not using Bootstrap)
-  modal.addEventListener('click', function(e) {
-    if (e.target.classList.contains('modal') || e.target.classList.contains('btn-close')) {
-      modal.classList.remove('show');
-      modal.style.display = 'none';
-      document.body.classList.remove('modal-open');
-    }
-  });
-}
+// The following legacy code is now removed to avoid confusion and duplication.
+// All project rendering and modal logic should use projectDetails and displayProjects only.
