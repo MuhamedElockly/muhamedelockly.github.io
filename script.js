@@ -734,3 +734,141 @@ if (carousel && leftArrow && rightArrow) {
     carousel.scrollBy({ left: carousel.offsetWidth, behavior: 'smooth' });
   };
 }
+
+// --- Project Details Modal Functionality ---
+const projectData = {
+  1: {
+    title: 'JSProject',
+    image: 'enhanced-shot.png',
+    status: 'COMPLETED',
+    year: '2024',
+    tech: ['JavaScript', 'HTML5', 'CSS3'],
+    meta: [
+      { icon: 'fas fa-calendar', text: '2024' },
+      { icon: 'fab fa-js', text: 'JavaScript' },
+      { icon: 'fas fa-star', text: 'Featured' }
+    ],
+    description: 'A modern web application built with JavaScript and modern web technologies.',
+    client: 'Open Source',
+    role: 'Lead Developer',
+    features: 'Real-time updates, Responsive design, REST API integration',
+    challenges: 'Cross-browser compatibility, Performance optimization',
+    solutions: 'Used modern JS frameworks, Lazy loading, Code splitting',
+    github: '#',
+    live: '#'
+  },
+  2: {
+    title: 'Snake Game',
+    image: 'enhanced-shot.png',
+    status: 'IN PROGRESS',
+    year: '2023',
+    tech: ['JavaScript', 'HTML5', 'Canvas'],
+    meta: [
+      { icon: 'fas fa-calendar', text: '2023' },
+      { icon: 'fab fa-js', text: 'JavaScript' },
+      { icon: 'fas fa-trophy', text: 'Game' }
+    ],
+    description: 'A classic Snake game built with HTML5 Canvas and JavaScript, featuring smooth controls and a retro look.',
+    client: 'Personal',
+    role: 'Game Developer',
+    features: 'Smooth controls, Retro graphics, High score tracking',
+    challenges: 'Game loop timing, Input handling',
+    solutions: 'RequestAnimationFrame, Event listeners',
+    github: '#',
+    live: '#'
+  },
+  3: {
+    title: 'DB Manager',
+    image: 'enhanced-shot.png',
+    status: 'COMPLETED',
+    year: '2022',
+    tech: ['C#', '.NET', 'SQL Server'],
+    meta: [
+      { icon: 'fas fa-calendar', text: '2022' },
+      { icon: 'fas fa-database', text: 'SQL' },
+      { icon: 'fas fa-cogs', text: 'Tool' }
+    ],
+    description: 'A database management tool for organizing, querying, and visualizing SQL databases with a user-friendly interface.',
+    client: 'Enterprise',
+    role: 'Backend Engineer',
+    features: 'Visual query builder, Data export, User management',
+    challenges: 'Security, Large data sets',
+    solutions: 'Parameterized queries, Pagination',
+    github: '#',
+    live: '#'
+  }
+};
+
+const detailsButtons = document.querySelectorAll('.btn-details');
+const modal = document.getElementById('projectDetailsModal');
+const modalBody = document.getElementById('projectDetailsModalBody');
+
+if (detailsButtons && modal && modalBody) {
+  detailsButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const id = this.getAttribute('data-project-id');
+      const data = projectData[id];
+      if (!data) return;
+      modalBody.innerHTML = `
+        <div class="project-modal-details">
+          <div class="project-modal-media">
+            <img src="${data.image}" alt="${data.title} Screenshot" />
+          </div>
+          <div class="project-modal-info">
+            <div class="project-modal-meta">
+              ${data.meta.map(m => `<span><i class='${m.icon}'></i> ${m.text}</span>`).join('')}
+            </div>
+            <h3 class="project-title accent" style="margin:0 0 0.5rem 0;">${data.title}</h3>
+            <div class="project-modal-tech">
+              ${data.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
+            </div>
+            <div class="project-modal-section">
+              <div class="project-modal-section-title">Description</div>
+              <div class="project-modal-section-content">${data.description}</div>
+            </div>
+            <div class="project-modal-section">
+              <div class="project-modal-section-title">Client</div>
+              <div class="project-modal-section-content">${data.client}</div>
+            </div>
+            <div class="project-modal-section">
+              <div class="project-modal-section-title">Role</div>
+              <div class="project-modal-section-content">${data.role}</div>
+            </div>
+            <div class="project-modal-section">
+              <div class="project-modal-section-title">Features</div>
+              <div class="project-modal-section-content">${data.features}</div>
+            </div>
+            <div class="project-modal-section">
+              <div class="project-modal-section-title">Challenges</div>
+              <div class="project-modal-section-content">${data.challenges}</div>
+            </div>
+            <div class="project-modal-section">
+              <div class="project-modal-section-title">Solutions</div>
+              <div class="project-modal-section-content">${data.solutions}</div>
+            </div>
+            <div class="project-modal-actions">
+              <a href="${data.github}" class="btn btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+              <a href="${data.live}" class="btn btn-live" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+            </div>
+          </div>
+        </div>
+      `;
+      // Show modal (Bootstrap 5)
+      if (window.bootstrap && bootstrap.Modal) {
+        bootstrap.Modal.getOrCreateInstance(modal).show();
+      } else {
+        modal.classList.add('show');
+        modal.style.display = 'block';
+        document.body.classList.add('modal-open');
+      }
+    });
+  });
+  // Close modal fallback (if not using Bootstrap)
+  modal.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal') || e.target.classList.contains('btn-close')) {
+      modal.classList.remove('show');
+      modal.style.display = 'none';
+      document.body.classList.remove('modal-open');
+    }
+  });
+}
