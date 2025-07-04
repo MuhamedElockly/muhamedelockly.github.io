@@ -1074,6 +1074,13 @@ footer::before {
     min-width: 0;
     max-width: 100%;
   }
+  .projects-carousel,
+  .projects-horizontal-scroll {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 
 /* --- YouTube Thumbnail & Play Button Overlay --- */
@@ -1171,6 +1178,29 @@ footer::before {
   transition: box-shadow 0.2s, transform 0.2s;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 440px; /* Adjust as needed for your design */
+  max-height: 100%;
+}
+.project-card .card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.project-card .project-actions {
+  margin-top: auto;
+}
+/* Optional: truncate long descriptions for uniformity */
+.project-card .card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  min-height: 3.6em;
 }
 .project-card:hover {
   box-shadow: 0 0 0 4px #60a5fa, 0 16px 48px rgba(59, 130, 246, 0.22);
@@ -1522,5 +1552,40 @@ footer::before {
   .project-modal-info {
     min-width: 0;
     max-width: 100%;
+  }
+  .projects-carousel,
+  .projects-horizontal-scroll {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+/* Projects Carousel and Horizontal Scroll */
+.projects-carousel,
+.projects-horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1.5rem;
+}
+.project-card {
+  flex: 0 0 calc(33.333% - 1rem);
+  max-width: calc(33.333% - 1rem);
+  min-width: 320px;
+  scroll-snap-align: start;
+}
+@media (max-width: 1200px) {
+  .project-card {
+    flex: 0 0 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+}
+@media (max-width: 768px) {
+  .project-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 }

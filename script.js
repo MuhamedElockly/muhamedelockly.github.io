@@ -612,7 +612,7 @@ function displayProjects() {
         }
         // Fallback if no video
         if (!videoSection) {
-            videoSection = `<div class="project-icon mb-3"><i class="fas fa-code"></i></div>`;
+            videoSection = '';
         }
 
         projectsListContainer.innerHTML += `
