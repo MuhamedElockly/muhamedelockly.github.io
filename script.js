@@ -406,35 +406,36 @@ const projectDetails = {
         ]
     },
     eminemLoseYourself: {
-        title: 'Eminem - Lose Yourself',
-        description: 'Music video for Eminem\'s iconic song "Lose Yourself".',
+        title: 'Pupple Sheet Designer',
+        description: 'A Java desktop app that act as designer that design pupple sheet paper".',
         githubUrl: '',
-        demoUrl: 'https://www.youtube.com/watch?v=YVkUvmDQ3HY',
-        youtubeId: 'YVkUvmDQ3HY',
+        demoUrl: 'https://youtu.be/oZuFHVO1ZhY?si=6yswXtwLcVYcaTrW',
+        youtubeId: '6yswXtwLcVYcaTrW',
         features: [
-            'Official music video',
-            'High quality',
-            'Over 1 billion views'
+            'Desktop app',
+            'Simple designer',
+            'Simple and clean Ui'
         ],
         technologies: [
-            'YouTube',
-            'Music',
-            'Video'
+            'Java',
+            'JavaFx',
+            'JavaSwing',
+            'SVG'
         ],
         challenges: 'N/A',
         solutions: 'N/A',
-        date: '2002',
-        type: 'Music Video',
-        duration: '5 min',
-        role: 'Artist',
+        date: '2023',
+        type: 'Desktop App',
+        duration: '2 Month',
+        role: 'Desktop Developer',
         contributions: [
-            'Performance',
-            'Lyrics',
-            'Production'
+            'Design application flow',
+            'design Ui',
+            'Implement Code'
         ],
         achievements: [
-            'Academy Award for Best Original Song',
-            'Over 1 billion views on YouTube'
+            'Successfully finish app'
+            
         ]
     }
 };
