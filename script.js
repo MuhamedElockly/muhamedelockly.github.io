@@ -408,9 +408,9 @@ const projectDetails = {
     eminemLoseYourself: {
         title: 'Pupple Sheet Designer',
         description: 'A Java desktop app that act as designer that design pupple sheet paper".',
-        githubUrl: '',
-        demoUrl: 'https://youtu.be/oZuFHVO1ZhY?si=6yswXtwLcVYcaTrW',
-        youtubeId: '6yswXtwLcVYcaTrW',
+        githubUrl: 'https://github.com/MuhamedElockly/OMR_DESIGNER.git',
+        demoUrl: 'https://youtu.be/oZuFHVO1ZhY',
+        youtubeId: 'oZuFHVO1ZhY',
         features: [
             'Desktop app',
             'Simple designer',
