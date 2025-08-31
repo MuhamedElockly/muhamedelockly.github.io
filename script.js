@@ -422,7 +422,7 @@ const projectDetails = {
             'JavaSwing',
             'SVG'
         ],
-        challenges: 'N/A',
+        challenges: 'Make Application easy to use',
         solutions: 'N/A',
         date: '2023',
         type: 'Desktop App',
