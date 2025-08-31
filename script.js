@@ -405,7 +405,7 @@ const projectDetails = {
             'Created a responsive and playable game'
         ]
     },
-    eminemLoseYourself: {
+    puppleSheetDesigner: {
         title: 'Pupple Sheet Designer',
         description: 'A Java desktop app that act as designer that design pupple sheet paper".',
         githubUrl: 'https://github.com/MuhamedElockly/OMR_DESIGNER.git',
