@@ -480,7 +480,6 @@ document.querySelectorAll('.project-details-btn').forEach(button => {
         // Modern, animated, full-details modal
         modalBody.innerHTML = `
             <div class="project-modal-details animate__animated animate__fadeInUp">
-                <button type="button" class="btn-close modal-x-close" data-bs-dismiss="modal" aria-label="Close" style="position:absolute;top:1.2rem;right:1.2rem;z-index:10;font-size:1.5rem;"></button>
                 <div class="project-modal-media">
                     <a href="https://www.youtube.com/watch?v=${project.youtubeId}" target="_blank" class="youtube-thumbnail-link" style="margin-bottom:1rem;">
                         <img src="https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg" alt="${project.title} Thumbnail" style="width:100%;border-radius:1.25rem;">
@@ -669,10 +668,9 @@ function displayProjects() {
             const modal = document.getElementById('projectDetailsModal');
             const modalBody = modal.querySelector('.modal-body');
             
-            // Modern, animated, full-details modal
-            modalBody.innerHTML = `
-                <div class="project-modal-details animate__animated animate__fadeInUp">
-                    <button type="button" class="btn-close modal-x-close" data-bs-dismiss="modal" aria-label="Close" style="position:absolute;top:1.2rem;right:1.2rem;z-index:10;font-size:1.5rem;"></button>
+                         // Modern, animated, full-details modal
+             modalBody.innerHTML = `
+                 <div class="project-modal-details animate__animated animate__fadeInUp">
                     <div class="project-modal-media">
                         <a href="https://www.youtube.com/watch?v=${project.youtubeId}" target="_blank" class="youtube-thumbnail-link" style="margin-bottom:1rem;">
                             <img src="https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg" alt="${project.title} Thumbnail" style="width:100%;border-radius:1.25rem;">
