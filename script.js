@@ -278,8 +278,8 @@ const projectDetails = {
             'HTML5',
             'CSS3',
             'Bootstrap',
-            'Font Awesome',
-            'Json Server'
+            'Font Awesome'
+            
         ],
         challenges: 'Implementing complex UI interactions and ensuring cross-browser compatibility.',
         solutions: 'Utilized modern JavaScript features and implemented progressive enhancement.',
