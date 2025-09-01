@@ -260,8 +260,8 @@ const projectDetails = {
     jsproject: {
         title: 'E-Commerce front-end',
         description: 'A modern e-commerce web application showcasing advanced JavaScript features and modern web development practices.',
-        githubUrl: 'https://www.youtube.com/watch?v=FeNTSMtp1DA',
-        demoUrl: 'https://youtu.be/YVkUvmDQ3HY?si=xqty1I8cOQHrm5Il',
+        githubUrl: 'https://github.com/MuhamedElockly/JSProject.git',
+        demoUrl: 'https://www.youtube.com/watch?v=FeNTSMtp1DA',
         youtubeId: 'FeNTSMtp1DA',
         features: [
             'Customer store',
