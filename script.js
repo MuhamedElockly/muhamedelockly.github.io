@@ -258,12 +258,15 @@ document.querySelectorAll('.play-btn').forEach(button => {
 // Project Details Modal with GitHub Integration
 const projectDetails = {
     jsproject: {
-        title: 'JSProject',
-        description: 'A modern web application showcasing advanced JavaScript features and modern web development practices.',
-        githubUrl: 'https://github.com/MuhamedElockly/JSProject.git',
+        title: 'E-Commerce front-end',
+        description: 'A modern e-commerce web application showcasing advanced JavaScript features and modern web development practices.',
+        githubUrl: 'https://www.youtube.com/watch?v=FeNTSMtp1DA',
         demoUrl: 'https://youtu.be/YVkUvmDQ3HY?si=xqty1I8cOQHrm5Il',
-        youtubeId: 'YVkUvmDQ3HY',
+        youtubeId: 'FeNTSMtp1DA',
         features: [
+            'Customer store',
+            'Admin Dashboard',
+            'Seller Dashboard',
             'Responsive and modern UI design',
             'Interactive user interface',
             'Dynamic content loading',
@@ -276,12 +279,13 @@ const projectDetails = {
             'CSS3',
             'Bootstrap',
             'Font Awesome'
+            'Json Server'
         ],
         challenges: 'Implementing complex UI interactions and ensuring cross-browser compatibility.',
         solutions: 'Utilized modern JavaScript features and implemented progressive enhancement.',
-        date: '2024',
+        date: '2025',
         type: 'Web Application',
-        duration: '2 months',
+        duration: '1 months',
         role: 'Frontend Developer',
         contributions: [
             'Designed and implemented the user interface',
