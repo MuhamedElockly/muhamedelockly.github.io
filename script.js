@@ -285,6 +285,7 @@ const projectDetails = {
         solutions: 'Utilized modern JavaScript features and implemented progressive enhancement.',
         date: '2025',
         type: 'Web Application',
+        category: 'frontend',
         duration: '1 months',
         role: 'Frontend Developer',
         contributions: [
@@ -323,6 +324,7 @@ const projectDetails = {
         solutions: 'Integrated secure payment gateways and developed real-time inventory tracking.',
         date: '2024',
         type: 'Web Application',
+        category: 'fullstack',
         duration: '4 months',
         role: 'Full Stack Developer',
         contributions: [
@@ -361,6 +363,7 @@ const projectDetails = {
         solutions: 'Utilized SignalR for real-time communication and implemented efficient caching.',
         date: '2024',
         type: 'Web Application',
+        category: 'fullstack',
         duration: '5 months',
         role: 'Full Stack Developer',
         contributions: [
@@ -397,6 +400,7 @@ const projectDetails = {
         solutions: 'Implemented a time-based game loop and optimized collision checks.',
         date: '2023',
         type: 'Web Game',
+        category: 'frontend',
         duration: '2 weeks',
         role: 'Frontend Developer',
         contributions: [
@@ -430,6 +434,7 @@ const projectDetails = {
         solutions: 'N/A',
         date: '2023',
         type: 'Desktop App',
+        category: 'desktop',
         duration: '2 Month',
         role: 'Desktop Developer',
         contributions: [
@@ -621,7 +626,7 @@ function displayProjects() {
         }
 
         projectsListContainer.innerHTML += `
-            <div class="project-card card h-100">
+            <div class="project-card card h-100" data-type="${project.category || 'other'}">
                 <div class="project-video-container">
                     ${videoSection}
                 </div>
@@ -796,17 +801,7 @@ window.addEventListener('DOMContentLoaded', function() {
     scrollContainer.addEventListener('scroll', updateArrows);
 });
 
-// Duplicate projects for testing
-const originalProjects = Object.values(projectDetails);
-let i = 1;
-while (Object.keys(projectDetails).length < 9) {
-    for (const proj of originalProjects) {
-        if (Object.keys(projectDetails).length >= 9) break;
-        const newKey = proj.title.toLowerCase().replace(/\s/g, '') + '_copy' + i;
-        projectDetails[newKey] = { ...proj, title: proj.title + ' Copy ' + i };
-        i++;
-    }
-}
+
 
 // Projects Carousel Arrow Functionality
 const carousel = document.querySelector('.projects-carousel');
@@ -821,6 +816,103 @@ if (carousel && leftArrow && rightArrow) {
     carousel.scrollBy({ left: carousel.offsetWidth, behavior: 'smooth' });
   };
 }
+
+// Project Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filterValue = this.getAttribute('data-filter');
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter projects
+            projectCards.forEach(card => {
+                const projectType = card.getAttribute('data-type');
+                
+                if (filterValue === 'all' || projectType === filterValue) {
+                    card.classList.remove('filtered-out');
+                    card.classList.add('filtered-in');
+                } else {
+                    card.classList.add('filtered-out');
+                    card.classList.remove('filtered-in');
+                }
+            });
+            
+            // Refresh AOS animations
+            setTimeout(() => {
+                AOS.refresh();
+            }, 500);
+        });
+    });
+});
+
+// Theme Toggle Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference or default to dark
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    htmlElement.setAttribute('data-bs-theme', currentTheme);
+    updateThemeIcon(currentTheme);
+    
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = htmlElement.getAttribute('data-bs-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        htmlElement.setAttribute('data-bs-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+        
+        // Add smooth transition effect
+        htmlElement.style.transition = 'all 0.3s ease';
+        setTimeout(() => {
+            htmlElement.style.transition = '';
+        }, 300);
+    });
+    
+    function updateThemeIcon(theme) {
+        if (theme === 'light') {
+            icon.className = 'fas fa-sun';
+        } else {
+            icon.className = 'fas fa-moon';
+        }
+    }
+});
+
+// Active Navigation Link Highlighting
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    
+    function updateActiveNavLink() {
+        const scrollPos = window.scrollY + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', updateActiveNavLink);
+    updateActiveNavLink(); // Initial call
+});
 
 // --- Project Details Modal Functionality ---
 // The following legacy code is now removed to avoid confusion and duplication.
