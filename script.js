@@ -340,43 +340,39 @@ const projectDetails = {
         ]
     },
     devspot: {
-        title: 'DevSpot',
-        description: 'A developer community platform for sharing knowledge and collaborating on projects.',
-        githubUrl: 'https://github.com/MuhamedElockly/DevSpot_MVC_Web_Application.git',
-        demoUrl: 'https://www.youtube.com/watch?v=YVkUvmDQ3HY',
-        youtubeId: 'YVkUvmDQ3HY',
+        title: 'Examination App',
+        description: 'An exam program designed to test students on various types of questions and a modern and attractive user interface. ',
+        githubUrl: 'https://github.com/MuhamedElockly/Examination-System.git',
+        demoUrl: 'https://www.youtube.com/watch?v=GNe9_k2voj4',
+        youtubeId: 'GNe9_k2voj4',
         features: [
-            'Real-time chat and notifications',
-            'Code sharing and collaboration',
-            'Project management tools',
-            'User profiles and reputation system',
-            'Search and filtering capabilities'
+            'Multible type of exams',
+            'Multible type of questions',
+            'Flaged Questions',
+            'Modern and attractive ui',
+            'MVVM architecture pattern'
         ],
         technologies: [
-            'ASP.NET MVC',
-            'SignalR',
-            'Bootstrap',
-            'JavaScript',
-            'SQL Server'
+            'C#',
+            'WPF',
+            'Windown Presentation Foundation',
+            'MVVM',
+            'Multi layers'
         ],
-        challenges: 'Implementing real-time features and managing concurrent users.',
-        solutions: 'Utilized SignalR for real-time communication and implemented efficient caching.',
-        date: '2024',
-        type: 'Web Application',
-        category: 'fullstack',
-        duration: '5 months',
-        role: 'Full Stack Developer',
+        challenges: 'Implementing well structured app using MVVM Pattern and attractive UI design',
+        solutions: 'The MVVM Pattern has been integrated in the best possible way, which has resulted in a complete separation between Logic and Design, as well as producing an attractive user interface. ',
+        date: '2025',
+        type: 'Desktop Application',
+        category: 'desktop',
+        duration: '1 month',
+        role: 'C# Desktop Developer',
         contributions: [
-            'Implemented real-time chat using SignalR',
-            'Developed the code sharing system',
-            'Created the reputation system',
-            'Built the search functionality'
+            'Implementing MVVM Pattern',
+            'Design Attractive UI',
+            'Separate App into layers',
+            'Design App UML for optimizing OOP Design'
         ],
-        achievements: [
-            'Supported 1000+ concurrent users',
-            'Achieved 50ms message delivery time',
-            'Implemented efficient code search'
-        ]
+        
     },
     snake: {
         title: 'Snake Game',
