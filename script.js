@@ -583,19 +583,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to display projects from the projectDetails object
 function displayProjects(filterType = 'all') {
+    console.log('displayProjects called with filterType:', filterType);
     const projectsListContainer = document.querySelector('.projects-list, #projects-list');
     if (!projectsListContainer) {
         console.error('Projects list container not found!');
         return;
     }
+    console.log('Projects container found:', projectsListContainer);
 
     projectsListContainer.innerHTML = '';
     let projectsArray = Object.values(projectDetails);
+    console.log('Projects array:', projectsArray);
     
     // Filter projects based on category
     if (filterType !== 'all') {
         projectsArray = projectsArray.filter(project => project.category === filterType);
     }
+    console.log('Filtered projects array:', projectsArray);
 
     projectsArray.forEach(project => {
         // Use YouTube thumbnail if youtubeId exists, else fallback to static image
@@ -740,7 +744,13 @@ function displayProjects(filterType = 'all') {
     AOS.refreshHard();
 }
 
-document.addEventListener('DOMContentLoaded', displayProjects);
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded');
+    // Add a small delay to ensure all elements are ready
+    setTimeout(() => {
+        displayProjects('all');
+    }, 100);
+});
 
 // Horizontal scroll arrow logic for projects section
 window.addEventListener('DOMContentLoaded', function() {
