@@ -340,39 +340,43 @@ const projectDetails = {
         ]
     },
     devspot: {
-        title: 'Examination App',
-        description: 'An exam program designed to test students on various types of questions and a modern and attractive user interface. ',
-        githubUrl: 'https://github.com/MuhamedElockly/Examination-System.git',
-        demoUrl: 'https://www.youtube.com/watch?v=GNe9_k2voj4',
-        youtubeId: 'GNe9_k2voj4',
+        title: 'DevSpot',
+        description: 'A developer community platform for sharing knowledge and collaborating on projects.',
+        githubUrl: 'https://github.com/MuhamedElockly/DevSpot_MVC_Web_Application.git',
+        demoUrl: 'https://www.youtube.com/watch?v=YVkUvmDQ3HY',
+        youtubeId: 'YVkUvmDQ3HY',
         features: [
-            'Multible type of exams',
-            'Multible type of questions',
-            'Flaged Questions',
-            'Modern and attractive ui',
-            'MVVM architecture pattern'
+            'Real-time chat and notifications',
+            'Code sharing and collaboration',
+            'Project management tools',
+            'User profiles and reputation system',
+            'Search and filtering capabilities'
         ],
         technologies: [
-            'C#',
-            'WPF',
-            'Windown Presentation Foundation',
-            'MVVM',
-            'Multi layers'
+            'ASP.NET MVC',
+            'SignalR',
+            'Bootstrap',
+            'JavaScript',
+            'SQL Server'
         ],
-        challenges: 'Implementing well structured app using MVVM Pattern and attractive UI design',
-        solutions: 'The MVVM Pattern has been integrated in the best possible way, which has resulted in a complete separation between Logic and Design, as well as producing an attractive user interface. ',
-        date: '2025',
-        type: 'Desktop Application',
-        category: 'desktop',
-        duration: '1 month',
-        role: 'C# Desktop Developer',
+        challenges: 'Implementing real-time features and managing concurrent users.',
+        solutions: 'Utilized SignalR for real-time communication and implemented efficient caching.',
+        date: '2024',
+        type: 'Web Application',
+        category: 'fullstack',
+        duration: '5 months',
+        role: 'Full Stack Developer',
         contributions: [
-            'Implementing MVVM Pattern',
-            'Design Attractive UI',
-            'Separate App into layers',
-            'Design App UML for optimizing OOP Design'
+            'Implemented real-time chat using SignalR',
+            'Developed the code sharing system',
+            'Created the reputation system',
+            'Built the search functionality'
         ],
-        
+        achievements: [
+            'Supported 1000+ concurrent users',
+            'Achieved 50ms message delivery time',
+            'Implemented efficient code search'
+        ]
     },
     snake: {
         title: 'Snake Game',
@@ -582,7 +586,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Function to display projects from the projectDetails object
-function displayProjects(filterType = 'all') {
+function displayProjects() {
     const projectsListContainer = document.querySelector('.projects-list, #projects-list');
     if (!projectsListContainer) {
         console.error('Projects list container not found!');
@@ -590,12 +594,7 @@ function displayProjects(filterType = 'all') {
     }
 
     projectsListContainer.innerHTML = '';
-    let projectsArray = Object.values(projectDetails);
-    
-    // Filter projects based on category
-    if (filterType !== 'all') {
-        projectsArray = projectsArray.filter(project => project.category === filterType);
-    }
+    const projectsArray = Object.values(projectDetails);
 
     projectsArray.forEach(project => {
         // Use YouTube thumbnail if youtubeId exists, else fallback to static image
@@ -649,7 +648,7 @@ function displayProjects(filterType = 'all') {
                         ${(project.technologies || []).map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
                     </div>
                     <div class="project-actions">
-                        <a href="${project.youtubeId ? 'https://www.youtube.com/watch?v=' + project.youtubeId : (project.demoUrl || '#')}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <a href="${project.youtubeId ? `https://www.youtube.com/watch?v=${project.youtubeId}` : (project.demoUrl || '#')}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
                             <i class="fas fa-play me-2"></i>Watch Video
                         </a>
                         <button class="btn btn-details ms-2 project-details-btn" data-project="${Object.keys(projectDetails).find(key => projectDetails[key] === project)}" data-bs-toggle="modal" data-bs-target="#projectDetailsModal">
@@ -740,12 +739,7 @@ function displayProjects(filterType = 'all') {
     AOS.refreshHard();
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Add a small delay to ensure all elements are ready
-    setTimeout(() => {
-        displayProjects('all');
-    }, 100);
-});
+document.addEventListener('DOMContentLoaded', displayProjects);
 
 // Horizontal scroll arrow logic for projects section
 window.addEventListener('DOMContentLoaded', function() {
@@ -824,6 +818,7 @@ if (carousel && leftArrow && rightArrow) {
 // Project Filter Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
     
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -833,8 +828,18 @@ document.addEventListener('DOMContentLoaded', function() {
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             
-            // Reinitialize and display filtered projects
-            displayProjects(filterValue);
+            // Filter projects
+            projectCards.forEach(card => {
+                const projectType = card.getAttribute('data-type');
+                
+                if (filterValue === 'all' || projectType === filterValue) {
+                    card.classList.remove('filtered-out');
+                    card.classList.add('filtered-in');
+                } else {
+                    card.classList.add('filtered-out');
+                    card.classList.remove('filtered-in');
+                }
+            });
             
             // Refresh AOS animations
             setTimeout(() => {
