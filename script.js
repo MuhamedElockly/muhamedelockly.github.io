@@ -586,7 +586,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Function to display projects from the projectDetails object
-function displayProjects() {
+function displayProjects(filterType = 'all') {
     const projectsListContainer = document.querySelector('.projects-list, #projects-list');
     if (!projectsListContainer) {
         console.error('Projects list container not found!');
@@ -594,7 +594,12 @@ function displayProjects() {
     }
 
     projectsListContainer.innerHTML = '';
-    const projectsArray = Object.values(projectDetails);
+    let projectsArray = Object.values(projectDetails);
+    
+    // Filter projects based on category
+    if (filterType !== 'all') {
+        projectsArray = projectsArray.filter(project => project.category === filterType);
+    }
 
     projectsArray.forEach(project => {
         // Use YouTube thumbnail if youtubeId exists, else fallback to static image
@@ -818,7 +823,6 @@ if (carousel && leftArrow && rightArrow) {
 // Project Filter Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
     
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -828,18 +832,8 @@ document.addEventListener('DOMContentLoaded', function() {
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             
-            // Filter projects
-            projectCards.forEach(card => {
-                const projectType = card.getAttribute('data-type');
-                
-                if (filterValue === 'all' || projectType === filterValue) {
-                    card.classList.remove('filtered-out');
-                    card.classList.add('filtered-in');
-                } else {
-                    card.classList.add('filtered-out');
-                    card.classList.remove('filtered-in');
-                }
-            });
+            // Reinitialize and display filtered projects
+            displayProjects(filterValue);
             
             // Refresh AOS animations
             setTimeout(() => {
