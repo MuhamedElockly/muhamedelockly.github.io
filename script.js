@@ -749,19 +749,32 @@ function displayProjects(filterValue = 'all') {
 }
 
 // Initialize projects on page load - show all projects by default
-document.addEventListener('DOMContentLoaded', function() {
+function initializeProjects() {
     // Ensure "All Projects" filter is active by default
     const filterButtons = document.querySelectorAll('.filter-btn');
-    filterButtons.forEach(btn => {
-        if (btn.getAttribute('data-filter') === 'all') {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
-    });
+    if (filterButtons.length > 0) {
+        filterButtons.forEach(btn => {
+            if (btn.getAttribute('data-filter') === 'all') {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
     
     // Display all projects by default
     displayProjects('all');
+}
+
+// Try multiple ways to ensure projects load
+document.addEventListener('DOMContentLoaded', initializeProjects);
+
+// Also try on window load as a fallback
+window.addEventListener('load', function() {
+    const projectsListContainer = document.querySelector('#projects-list');
+    if (projectsListContainer && projectsListContainer.innerHTML === '') {
+        initializeProjects();
+    }
 });
 
 // Horizontal scroll arrow logic for projects section
