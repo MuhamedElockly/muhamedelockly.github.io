@@ -320,6 +320,7 @@ body {
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
+  isolation: isolate;
 }
 
 .hero-cta .btn::before {
@@ -332,6 +333,7 @@ body {
   background: var(--gradient-1);
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: 0;
 }
 
 .hero-cta .btn:hover {
@@ -340,7 +342,14 @@ body {
 }
 
 .hero-cta .btn:hover::before {
-  opacity: 1;
+  opacity: 0.2;
+}
+
+/* Ensure button text is always visible above the ::before overlay */
+.hero-cta .btn,
+.hero-cta .btn * {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-cta .btn span {
