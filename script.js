@@ -593,10 +593,22 @@ function displayProjects(filterValue = 'all') {
         return;
     }
 
+    // Check if projectDetails exists
+    if (!projectDetails || typeof projectDetails !== 'object') {
+        console.error('projectDetails object not found!');
+        return;
+    }
+
     projectsListContainer.innerHTML = '';
     
     // Get all projects and filter them based on the filterValue
     let projectsArray = Object.values(projectDetails);
+    
+    // Check if we have any projects
+    if (projectsArray.length === 0) {
+        console.warn('No projects found in projectDetails');
+        return;
+    }
     
     // Filter the array based on the selected filter
     if (filterValue !== 'all') {
@@ -750,6 +762,13 @@ function displayProjects(filterValue = 'all') {
 
 // Initialize projects on page load - show all projects by default
 function initializeProjects() {
+    // Check if container exists
+    const projectsListContainer = document.querySelector('#projects-list');
+    if (!projectsListContainer) {
+        console.warn('Projects container not found, retrying...');
+        return false;
+    }
+    
     // Ensure "All Projects" filter is active by default
     const filterButtons = document.querySelectorAll('.filter-btn');
     if (filterButtons.length > 0) {
@@ -762,20 +781,52 @@ function initializeProjects() {
         });
     }
     
-    // Display all projects by default
+    // Display all projects by default - force display
     displayProjects('all');
+    
+    // Verify projects were rendered
+    if (projectsListContainer.children.length === 0) {
+        console.warn('No projects rendered, retrying...');
+        return false;
+    }
+    
+    return true;
 }
 
-// Try multiple ways to ensure projects load
-document.addEventListener('DOMContentLoaded', initializeProjects);
-
-// Also try on window load as a fallback
-window.addEventListener('load', function() {
-    const projectsListContainer = document.querySelector('#projects-list');
-    if (projectsListContainer && projectsListContainer.innerHTML === '') {
-        initializeProjects();
+// Function to ensure projects are loaded - tries multiple times
+function ensureProjectsLoaded() {
+    // Check if DOM is already ready
+    if (document.readyState === 'loading') {
+        // DOM is still loading, wait for DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!initializeProjects()) {
+                // Retry after a short delay if initialization failed
+                setTimeout(function() {
+                    initializeProjects();
+                }, 200);
+            }
+        });
+    } else {
+        // DOM is already ready, initialize immediately
+        if (!initializeProjects()) {
+            // Retry after a short delay if initialization failed
+            setTimeout(function() {
+                initializeProjects();
+            }, 200);
+        }
     }
-});
+    
+    // Also try on window load as a fallback
+    window.addEventListener('load', function() {
+        const projectsListContainer = document.querySelector('#projects-list');
+        if (projectsListContainer && projectsListContainer.children.length === 0) {
+            initializeProjects();
+        }
+    });
+}
+
+// Start initialization
+ensureProjectsLoaded();
 
 // Horizontal scroll arrow logic for projects section
 window.addEventListener('DOMContentLoaded', function() {
