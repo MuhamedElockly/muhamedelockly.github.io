@@ -939,17 +939,38 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
         
-        // Force navbar to update by toggling scrolled class
-        const navbar = document.querySelector('.navbar');
-        if (navbar) {
-            const isScrolled = navbar.classList.contains('scrolled');
-            if (isScrolled) {
-                navbar.classList.remove('scrolled');
-                // Force reflow
-                navbar.offsetHeight;
-                navbar.classList.add('scrolled');
+        // Use requestAnimationFrame to ensure DOM update happens first
+        requestAnimationFrame(() => {
+            // Force navbar to update by toggling scrolled class
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                const isScrolled = navbar.classList.contains('scrolled');
+                if (isScrolled) {
+                    navbar.classList.remove('scrolled');
+                    // Force reflow
+                    navbar.offsetHeight;
+                    navbar.classList.add('scrolled');
+                }
             }
-        }
+            
+            // Force projects section to recalculate styles
+            const projectsSection = document.querySelector('.projects-section');
+            if (projectsSection) {
+                // Force style recalculation by reading computed style
+                getComputedStyle(projectsSection).background;
+                // Trigger a reflow
+                projectsSection.offsetHeight;
+            }
+            
+            // Force project cards to recalculate styles
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                // Force style recalculation
+                getComputedStyle(card).background;
+                // Trigger a reflow
+                card.offsetHeight;
+            });
+        });
         
         // Add smooth transition effect
         htmlElement.style.transition = 'all 0.3s ease';
