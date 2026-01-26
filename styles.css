@@ -2007,7 +2007,7 @@ footer::before {
   margin-left: 0;
   margin-right: 50%;
   padding-right: 2rem;
-  text-align: right;
+  text-align: left;
 }
 
 .timeline-item:nth-child(even) .timeline-content {
@@ -2074,6 +2074,11 @@ footer::before {
 .timeline-description ul {
   list-style: none;
   padding: 0;
+  text-align: left;
+}
+
+.timeline-description {
+  text-align: left;
 }
 
 .timeline-description li {
@@ -2081,6 +2086,7 @@ footer::before {
   margin-bottom: 0.5rem;
   position: relative;
   padding-left: 1.5rem;
+  text-align: left;
 }
 
 .timeline-description li::before {
