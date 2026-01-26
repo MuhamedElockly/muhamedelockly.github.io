@@ -1016,6 +1016,41 @@ document.addEventListener('DOMContentLoaded', function() {
     updateActiveNavLink(); // Initial call
 });
 
+// Auto-close navbar on mobile when clicking nav links
+document.addEventListener('DOMContentLoaded', function() {
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('#navbarNav');
+    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    
+    // Close navbar when clicking on a nav link
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            // Check if navbar is expanded (mobile view)
+            if (navbarCollapse.classList.contains('show')) {
+                // Use Bootstrap's collapse API to close
+                const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                    toggle: false
+                });
+                bsCollapse.hide();
+            }
+        });
+    });
+    
+    // Close navbar when clicking outside
+    document.addEventListener('click', function(event) {
+        const isClickInsideNav = navbarCollapse.contains(event.target);
+        const isClickOnToggler = navbarToggler.contains(event.target);
+        
+        // If navbar is open and click is outside navbar and not on toggler
+        if (navbarCollapse.classList.contains('show') && !isClickInsideNav && !isClickOnToggler) {
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                toggle: false
+            });
+            bsCollapse.hide();
+        }
+    });
+});
+
 // --- Project Details Modal Functionality ---
 // The following legacy code is now removed to avoid confusion and duplication.
 // All project rendering and modal logic should use projectDetails and displayProjects only.
