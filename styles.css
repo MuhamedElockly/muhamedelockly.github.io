@@ -2006,8 +2006,10 @@ footer::before {
 .timeline-item:nth-child(odd) .timeline-content {
   margin-left: 0;
   margin-right: 50%;
+  padding-left: 2rem;
   padding-right: 2rem;
   text-align: left;
+  direction: ltr;
 }
 
 .timeline-item:nth-child(even) .timeline-content {
@@ -2024,6 +2026,8 @@ footer::before {
   padding: 2rem;
   position: relative;
   transition: all 0.3s ease;
+  text-align: left;
+  direction: ltr;
 }
 
 .timeline-content::before {
@@ -2075,10 +2079,14 @@ footer::before {
   list-style: none;
   padding: 0;
   text-align: left;
+  direction: ltr;
 }
 
 .timeline-description {
   text-align: left;
+  direction: ltr;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .timeline-description li {
@@ -2087,6 +2095,9 @@ footer::before {
   position: relative;
   padding-left: 1.5rem;
   text-align: left;
+  direction: ltr;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .timeline-description li::before {
