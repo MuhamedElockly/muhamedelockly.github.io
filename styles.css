@@ -1824,12 +1824,20 @@ footer::before {
   margin-top: 2rem;
 }
 
+.about-info .row {
+  margin-bottom: 0;
+}
+
+.about-info .col-md-4 {
+  margin-bottom: 0.5rem;
+}
+
 .info-item {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   color: var(--text-color);
 }
 
