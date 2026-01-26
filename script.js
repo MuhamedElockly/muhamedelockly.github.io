@@ -748,7 +748,21 @@ function displayProjects(filterValue = 'all') {
     AOS.refreshHard();
 }
 
-document.addEventListener('DOMContentLoaded', displayProjects);
+// Initialize projects on page load - show all projects by default
+document.addEventListener('DOMContentLoaded', function() {
+    // Ensure "All Projects" filter is active by default
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
+        if (btn.getAttribute('data-filter') === 'all') {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // Display all projects by default
+    displayProjects('all');
+});
 
 // Horizontal scroll arrow logic for projects section
 window.addEventListener('DOMContentLoaded', function() {
