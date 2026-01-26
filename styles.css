@@ -35,6 +35,7 @@
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
   --shadow-glow: 0 0 15px rgba(59, 130, 246, 0.5);
   --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --navbar-bg: rgba(17, 24, 39, 0.95);
 }
 
 /* Light Mode Variables */
@@ -66,6 +67,7 @@
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
   --shadow-glow: 0 0 15px rgba(37, 99, 235, 0.3);
+  --navbar-bg: rgba(255, 255, 255, 0.95);
 }
 
 /* Custom Styles */
@@ -79,7 +81,7 @@ body {
 
 /* Navigation */
 .navbar {
-  background-color: rgba(17, 24, 39, 0.95);
+  background-color: var(--navbar-bg);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   border-bottom: 1px solid var(--border-color);
@@ -93,6 +95,11 @@ body {
   background-color: var(--bg-darker);
   box-shadow: var(--shadow-lg);
   padding: 0.75rem 0; /* Slightly less padding when scrolled */
+}
+
+/* Light mode scrolled navbar - ensure it uses light background */
+[data-bs-theme="light"] .navbar.scrolled {
+  background-color: var(--bg-darker);
 }
 
 .navbar-brand {

@@ -939,6 +939,18 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
         
+        // Force navbar to update by toggling scrolled class
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            const isScrolled = navbar.classList.contains('scrolled');
+            if (isScrolled) {
+                navbar.classList.remove('scrolled');
+                // Force reflow
+                navbar.offsetHeight;
+                navbar.classList.add('scrolled');
+            }
+        }
+        
         // Add smooth transition effect
         htmlElement.style.transition = 'all 0.3s ease';
         setTimeout(() => {
