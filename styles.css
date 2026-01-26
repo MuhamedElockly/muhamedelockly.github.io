@@ -262,6 +262,39 @@ body {
   animation: fadeIn 1s ease-out;
   will-change: transform;
   transform: translateZ(0);
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-content h1 {
+  min-height: 1.5em;
+  opacity: 0;
+  animation: fadeInSmooth 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.hero-content h2 {
+  min-height: 1.3em;
+  opacity: 0;
+  animation: fadeInSmooth 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+}
+
+.hero-content p {
+  min-height: 4.5em;
+  opacity: 0;
+  animation: fadeInSmooth 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.8s forwards;
+}
+
+@keyframes fadeInSmooth {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-cta .btn {
@@ -1165,19 +1198,6 @@ footer::before {
   }
 }
 
-.hero-content h1,
-.hero-content h2,
-.hero-content p {
-  animation: fadeIn 0.5s ease forwards;
-}
-
-.hero-content h2 {
-  animation-delay: 0.2s;
-}
-
-.hero-content p {
-  animation-delay: 0.4s;
-}
 
 /* --- Enhanced Arrow Buttons --- */
 .scroll-arrow {

@@ -76,41 +76,10 @@ function updateParallax() {
     rafId = null;
 }
 
-// Optimized typing effect
-const typeWriter = (element, text, speed = 50) => {
-    let i = 0;
-    element.innerHTML = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    
-    type();
-};
-
-// Initialize typing effect with debounce
-let typingTimeout;
-window.addEventListener('load', () => {
-    clearTimeout(typingTimeout);
-    typingTimeout = setTimeout(() => {
-        const heroTitle = document.querySelector('.hero-content h1');
-        const heroSubtitle = document.querySelector('.hero-content h2');
-        const heroText = document.querySelector('.hero-content p');
-
-        if (heroTitle && heroSubtitle && heroText) {
-            typeWriter(heroTitle, heroTitle.textContent);
-            setTimeout(() => {
-                typeWriter(heroSubtitle, heroSubtitle.textContent);
-                setTimeout(() => {
-                    typeWriter(heroText, heroText.textContent);
-                }, 500);
-            }, 500);
-        }
-    }, 100);
+// Smooth fade-in animation for hero content - content stays in place, no layout shift
+document.addEventListener('DOMContentLoaded', function() {
+    // Content is already in HTML, CSS handles the smooth fade-in animation
+    // No need to manipulate content, preventing layout shift
 });
 
 // Optimized scroll progress indicator
