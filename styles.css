@@ -273,9 +273,9 @@ body {
   line-height: 1.2;
   margin-bottom: 1rem;
   opacity: 0;
-  visibility: visible;
-  display: block;
   animation: fadeInSmooth 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  /* Force browser to reserve space even with opacity 0 */
+  will-change: opacity, transform;
 }
 
 .hero-content h2 {
@@ -283,9 +283,8 @@ body {
   line-height: 1.3;
   margin-bottom: 1.5rem;
   opacity: 0;
-  visibility: visible;
-  display: block;
   animation: fadeInSmooth 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s forwards;
+  will-change: opacity, transform;
 }
 
 .hero-content p {
@@ -293,27 +292,27 @@ body {
   line-height: 1.6;
   margin-bottom: 2rem;
   opacity: 0;
-  visibility: visible;
-  display: block;
   animation: fadeInSmooth 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2s forwards;
+  will-change: opacity, transform;
 }
 
 .hero-content .hero-cta {
   min-height: 60px;
   opacity: 0;
-  visibility: visible;
-  display: block;
   animation: fadeInSmooth 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.8s forwards;
+  will-change: opacity, transform;
 }
 
 @keyframes fadeInSmooth {
   0% {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(10px);
+    filter: blur(2px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 

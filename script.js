@@ -76,10 +76,49 @@ function updateParallax() {
     rafId = null;
 }
 
-// Smooth fade-in animation for hero content - content stays in place, no layout shift
+// Reserve space for hero content to prevent layout shift
 document.addEventListener('DOMContentLoaded', function() {
-    // Content is already in HTML, CSS handles the smooth fade-in animation
-    // No need to manipulate content, preventing layout shift
+    const heroTitle = document.querySelector('.hero-content h1');
+    const heroSubtitle = document.querySelector('.hero-content h2');
+    const heroText = document.querySelector('.hero-content p');
+    const heroCta = document.querySelector('.hero-content .hero-cta');
+    
+    // Temporarily make elements visible to measure their actual height
+    if (heroTitle) {
+        const originalOpacity = heroTitle.style.opacity;
+        heroTitle.style.opacity = '1';
+        heroTitle.style.visibility = 'visible';
+        const height = heroTitle.offsetHeight;
+        heroTitle.style.minHeight = height + 'px';
+        heroTitle.style.opacity = originalOpacity || '0';
+    }
+    
+    if (heroSubtitle) {
+        const originalOpacity = heroSubtitle.style.opacity;
+        heroSubtitle.style.opacity = '1';
+        heroSubtitle.style.visibility = 'visible';
+        const height = heroSubtitle.offsetHeight;
+        heroSubtitle.style.minHeight = height + 'px';
+        heroSubtitle.style.opacity = originalOpacity || '0';
+    }
+    
+    if (heroText) {
+        const originalOpacity = heroText.style.opacity;
+        heroText.style.opacity = '1';
+        heroText.style.visibility = 'visible';
+        const height = heroText.offsetHeight;
+        heroText.style.minHeight = height + 'px';
+        heroText.style.opacity = originalOpacity || '0';
+    }
+    
+    if (heroCta) {
+        const originalOpacity = heroCta.style.opacity;
+        heroCta.style.opacity = '1';
+        heroCta.style.visibility = 'visible';
+        const height = heroCta.offsetHeight;
+        heroCta.style.minHeight = height + 'px';
+        heroCta.style.opacity = originalOpacity || '0';
+    }
 });
 
 // Optimized scroll progress indicator
