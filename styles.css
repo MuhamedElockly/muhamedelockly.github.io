@@ -2158,7 +2158,15 @@ footer::before {
 .certificate-date {
   color: var(--text-muted);
   font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.certificate-id {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-family: 'Courier New', monospace;
   margin-bottom: 1.5rem;
+  word-break: break-all;
 }
 
 .certificate-skills {
