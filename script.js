@@ -1021,7 +1021,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('#navbarNav');
     const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-    const cvButton = document.querySelector('.navbar-nav .btn[href*=".pdf"]');
+    const cvLink = document.querySelector('.nav-link[href*=".pdf"]');
     
     // Close navbar when clicking on a nav link
     navLinks.forEach(link => {
@@ -1037,9 +1037,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close navbar when clicking on CV button
-    if (cvButton) {
-        cvButton.addEventListener('click', function() {
+    // Close navbar when clicking on CV link
+    if (cvLink) {
+        cvLink.addEventListener('click', function() {
             if (navbarCollapse.classList.contains('show')) {
                 const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
                     toggle: false
