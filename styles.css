@@ -2088,6 +2088,27 @@ footer::before {
   object-fit: cover;
 }
 
+.timeline-separator {
+  margin: 0 0.25rem;
+  color: var(--text-muted);
+}
+
+.timeline-cert-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.timeline-cert-link {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.timeline-cert-link:hover {
+  color: var(--accent-color);
+}
+
 .timeline-date {
   color: var(--text-muted);
   font-size: 0.9rem;
