@@ -2069,6 +2069,25 @@ footer::before {
   margin-bottom: 0.5rem;
 }
 
+.timeline-company-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.timeline-company-link:hover {
+  color: var(--primary-color);
+}
+
+.timeline-company-logo {
+  height: 32px;
+  width: 32px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
 .timeline-date {
   color: var(--text-muted);
   font-size: 0.9rem;
